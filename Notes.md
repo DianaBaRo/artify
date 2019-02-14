@@ -8,3 +8,5 @@ A command line interface for art exhibitions, starting with:
 		b. […]
 	
 	- Which exhibition do you want to learn more about?
+
+	so today I am making more notes
