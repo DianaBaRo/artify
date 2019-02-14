@@ -8,5 +8,3 @@ A command line interface for art exhibitions, starting with:
 		b. […]
 	
 	- Which exhibition do you want to learn more about?
-
-Lets se if a can commit this change
