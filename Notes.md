@@ -4,7 +4,7 @@ A command line interface for art exhibitions, starting with:
 	
 	-Show a list of exhibitions (scrape: http://www.artlyst.com/whats-on/)
 	
-		a. Exhibition title - venue - duration
+		a. Exhibition title - venue - duration - Description
 		b. […]
 	
 	- Which exhibition do you want to learn more about?(scrape: https://www.artlyst.com/whats-on-archive/young-gods/)
