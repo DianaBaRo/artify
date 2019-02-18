@@ -7,6 +7,8 @@ require 'nokogiri'
   index = Nokogiri::HTML(html)
 
   name = index.css("h4.event-name a").first.text
+  venue = index.css()
+  location = ikndex.css()
 
   binding.pry
 
