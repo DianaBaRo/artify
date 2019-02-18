@@ -1,0 +1,3 @@
+class Exhibition
+
+end
