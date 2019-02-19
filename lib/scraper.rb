@@ -75,10 +75,12 @@ link = 'http://www.artlyst.com/whats-on/'
 
   rows = individual_exhibition.css("tr")
 
-  rows.each do |data|
-    data.each do |dt|
+  rows.each do |row|
+    binding.pry if row.css("td").text.include?("Times")
+    row_data.each_with_index do |dt, index|
       binding.pry if dt.text.include?("Times")
-      times = dt.text
+      dt = dt [index +1]
+      dt.text
     end
   end
  
