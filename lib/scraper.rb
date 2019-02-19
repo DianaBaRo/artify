@@ -20,7 +20,7 @@ class Scraper
       exhibition_data[:starting_date] = exhibition.css("span.open-date").first.text
       exhibition_data[:closing_date] = exhibition.css("span.close-date").first.text
       exhibition_data[:individual_exhibition_url] = exhibition.css("h4.event-name a").attribute("href").value
-      #exhibition_data[:description] = exhibition.css(".tile-item--info p:nth-of-type(2)").first.text
+      exhibition_data[:description] = exhibition.css(".tile-item--info p:nth-of-type(2)").first.text
 
       exhibitions << exhibition_data
     end
