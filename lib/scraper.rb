@@ -65,13 +65,23 @@ link = 'http://www.artlyst.com/whats-on/'
 
 =end
 
+
+
   link = 'https://www.artlyst.com/whats-on-archive/young-gods/'
   html = open(link)
   individual_exhibition = Nokogiri::HTML(html)
 
   name = individual_exhibition.css("h1.entry-title").text
-  times = individual_exhibition.css("")
-  binding.pry
+
+  rows = individual_exhibition.css("tr")
+
+  rows.each do |data|
+    data.each do |dt|
+      binding.pry if dt.text.include?("Times")
+      times = dt.text
+    end
+  end
+ 
 =begin
   cost = individual_exhibition.css("")
   address = individual_exhibition.css("")
