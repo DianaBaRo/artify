@@ -35,13 +35,12 @@ class Scraper
 
     exhibition = {}
 
-    exhibition[:title] = individual_exhibition.css("h1.entry-title")
-    exhibition[:times] = individual_exhibition.css("")
-    exhibition[:cost] = individual_exhibition.css("")
-    exhibition[:venue] = individual_exhibition.css("")
-    exhibition[:address] = individual_exhibition.css("")
-    exhibition[:contact] = individual_exhibition.css("")
-    exhibition[:extended_description] = individual_exhibition.css("")
+    exhibition[:title] = individual_exhibition.css("h1.entry-title").text
+    exhibition[:times] = individual_exhibition.css("td")[3].content
+    exhibition[:cost] = individual_exhibition.css("td")[5].content
+    exhibition[:address] = individual_exhibition.css("td")[9].content
+    exhibition[:contact] = individual_exhibition.css("td")[11].content
+    exhibition[:extended_description] = individual_exhibition.css(".medium-9.columns").text
 
     exhibition
 
@@ -51,43 +50,29 @@ end
 =begin
 
 link = 'http://www.artlyst.com/whats-on/'
-  html = open(link)
-  index = Nokogiri::HTML(html)
+html = open(link)
+index = Nokogiri::HTML(html)
 
-  exhibition = index.css("div.tile-item.normal.Exhibition.recommended.editors_choice")
-  name = exhibition.css("h4.event-name a").first.text
-  venue = index.css("h5.tile-item--info---venue.venue").first.text
-  starting_date = index.css("span.open-date").first.text
-  closing_date = index.css("span.close-date").first.text
-  description = index.css(".tile-item--info p:nth-of-type(2)").first.text
-  url = exhibition.css("h4.event-name a").attribute("href").value
-  binding.pry
+exhibition = index.css("div.tile-item.normal.Exhibition.recommended.editors_choice")
+name = exhibition.css("h4.event-name a").first.text
+venue = index.css("h5.tile-item--info---venue.venue").first.text
+starting_date = index.css("span.open-date").first.text
+closing_date = index.css("span.close-date").first.text
+description = index.css(".tile-item--info p:nth-of-type(2)").first.text
+url = exhibition.css("h4.event-name a").attribute("href").value
 
-=end
+--------------------------------------------------------------------------------
 
+link = 'https://www.artlyst.com/whats-on-archive/young-gods/'
+html = open(link)
+individual_exhibition = Nokogiri::HTML(html)
 
+name = individual_exhibition.css("h1.entry-title").text
+times = individual_exhibition.css("td")[3].content
+cost = individual_exhibition.css("td")[5].content
+address = individual_exhibition.css("td")[9].content
+contact = individual_exhibition.css("td")[11].content
+extended_description = individual_exhibition.css(".medium-9.columns").text
 
-  link = 'https://www.artlyst.com/whats-on-archive/young-gods/'
-  html = open(link)
-  individual_exhibition = Nokogiri::HTML(html)
-
-  name = individual_exhibition.css("h1.entry-title").text
-
-  rows = individual_exhibition.css("tr")
-
-  rows.each do |row|
-    binding.pry if row.css("td").text.include?("Times")
-    row_data.each_with_index do |dt, index|
-      binding.pry if dt.text.include?("Times")
-      dt = dt [index +1]
-      dt.text
-    end
-  end
- 
-=begin
-  cost = individual_exhibition.css("")
-  address = individual_exhibition.css("")
-  contact = individual_exhibition.css("")
-  extended_description = individual_exhibition.css("")
 =end
  
