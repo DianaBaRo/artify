@@ -11,9 +11,9 @@ class Scraper
 
     exhibitions = []
 
-    individual_exhibition = index.css("div.tile-item.normal.Exhibition.recommended.editors_choice")
+    all_exhibitions = index.css("div.tile-item.normal.Exhibition.recommended.editors_choice")
 
-    individual_exhibition.each do |exhibition|
+    all_exhibitions.each do |exhibition|
       exhibition_data = {}
       exhibition_data[:name] = exhibition.css("h4.event-name a").first.text
       exhibition_data[:venue] = exhibition.css("h5.tile-item--info---venue.venue").first.text
@@ -29,13 +29,13 @@ class Scraper
 
   end
 
-  def self.scrape_individual_exhibition_page(individual_exhibition_url)
-    html = open(profile_url)
+  def self.scrape_exhibition_page(exhibition_url)
+    html = open(exhibition_url)
     individual_exhibition = Nokogiri::HTML(html)
 
     exhibition = {}
 
-    exhibition[:title] = individual_exhibition.css("h1.entry-title").text
+    #exhibition[:title] = individual_exhibition.css("h1.entry-title").text
     exhibition[:times] = individual_exhibition.css("td")[3].content
     exhibition[:cost] = individual_exhibition.css("td")[5].content
     exhibition[:address] = individual_exhibition.css("td")[9].content
