@@ -1,5 +1,9 @@
+require_relative "../lib/exhibition.rb"
+require_relative "../lib/scraper.rb"
+require 'nokogiri'
+
 class CommandLineInterface
-  BASE_PATH = "./fixtures/student-site/"
+  BASE_LINK = 'http://www.artlyst.com/whats-on/'
 
   def run
     make_exhibitions
@@ -8,14 +12,14 @@ class CommandLineInterface
   end
 
   def make_exhibitions
-    exhibitions_array = Scraper.scrape_index_page(BASE_PATH)
+    exhibitions_array = Scraper.scrape_index_page(BASE_LINK)
     Exhibition.create_from_collection(exhibitions_array)
   end
 
   def add_attributes_to_exhibitions
     Exhibition.all.each do |exhibition|
-      attributes = Scraper.scrape_profile_page(BASE_PATH + exhibition.profile_url)
-      exhibition.add_student_attributes(attributes)
+      attributes = Scraper.scrape_exhibition_page(BASE_LINK + exhibition.exhibition_url)
+      exhibition.add_exhibition_attributes(attributes)
     end
   end
 
@@ -23,11 +27,15 @@ class CommandLineInterface
     Exhibition.all.each do |exhibition|
       puts "#{exhibition.name.upcase}"
       puts "  venue: #{exhibition.venue}"
-      puts "  duration: #{exhibition.duration}"
+      puts "  starting_date: #{exhibition.starting_date}"
+      puts "  closing_date: #{exhibition.closing_date}"
+      puts "  exhibition_url: #{exhibition.exhibition_url}"
+      puts "  description: #{exhibition.description}"
       puts "  times: #{exhibition.times}"
       puts "  cost: #{exhibition.cost}"
       puts "  address: #{exhibition.address}"
       puts "  contact: #{exhibition.contact}"
+      puts "  extended_description: #{exhibition.extended_description}"
       puts "----------------------"
     end
   end
