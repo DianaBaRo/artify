@@ -1,4 +1,5 @@
 class CommandLineInterface
+  
   BASE_LINK = 'http://www.artlyst.com/whats-on/'
 
   def run
