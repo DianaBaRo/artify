@@ -25,8 +25,7 @@ class CommandLineInterface
             if index + 1 == input
               attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
               exhibition.add_exhibition_attributes(attributes)
-              display_exhibition_attributes(exhibition)
-              puts "Hola! #{exhibition.name}"
+              display_exhibition(exhibition)
             end
           end
         end
@@ -53,7 +52,7 @@ class CommandLineInterface
     end
   end
 
-  def display_exhibition_attributes(exhibition)
+  def display_exhibition(exhibition)
     puts "  Times: #{exhibition.times}"
     puts "  Cost: #{exhibition.cost}"
     puts "  Address: #{exhibition.address}"
