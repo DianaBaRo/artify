@@ -1,6 +1,8 @@
-require_relative "../lib/exhibition.rb"
-require_relative "../lib/scraper.rb"
-require 'nokogiri'
+#require_relative "../config/environment.rb"
+#require_relative "../lib/exhibition.rb"
+#require_relative "../lib/scraper.rb"
+#require 'nokogiri'
+#require 'open-uri'
 
 class CommandLineInterface
   BASE_LINK = 'http://www.artlyst.com/whats-on/'
@@ -18,7 +20,7 @@ class CommandLineInterface
 
   def add_attributes_to_exhibitions
     Exhibition.all.each do |exhibition|
-      attributes = Scraper.scrape_exhibition_page(BASE_LINK + exhibition.exhibition_url)
+      attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
       exhibition.add_exhibition_attributes(attributes)
     end
   end
@@ -26,16 +28,14 @@ class CommandLineInterface
   def display_exhibitions
     Exhibition.all.each do |exhibition|
       puts "#{exhibition.name.upcase}"
-      puts "  venue: #{exhibition.venue}"
-      puts "  starting_date: #{exhibition.starting_date}"
-      puts "  closing_date: #{exhibition.closing_date}"
-      puts "  exhibition_url: #{exhibition.exhibition_url}"
-      puts "  description: #{exhibition.description}"
-      puts "  times: #{exhibition.times}"
-      puts "  cost: #{exhibition.cost}"
-      puts "  address: #{exhibition.address}"
-      puts "  contact: #{exhibition.contact}"
-      puts "  extended_description: #{exhibition.extended_description}"
+      puts "  Venue: #{exhibition.venue}"
+      puts "  Starting date: #{exhibition.starting_date}"
+      puts "  Closing date: #{exhibition.closing_date}"
+      puts "  Times: #{exhibition.times}"
+      puts "  Cost: #{exhibition.cost}"
+      puts "  Address: #{exhibition.address}"
+      puts "  Contact: #{exhibition.contact}"
+      puts "  Extended description: #{exhibition.extended_description}"
       puts "----------------------"
     end
   end
