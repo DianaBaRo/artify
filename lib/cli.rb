@@ -1,9 +1,3 @@
-#require_relative "../config/environment.rb"
-#require_relative "../lib/exhibition.rb"
-#require_relative "../lib/scraper.rb"
-#require 'nokogiri'
-#require 'open-uri'
-
 class CommandLineInterface
   BASE_LINK = 'http://www.artlyst.com/whats-on/'
 
