@@ -47,17 +47,19 @@ class CommandLineInterface
 
   def display_exhibitions
     Exhibition.all.each_with_index do |exhibition, index|
-      puts "#{index + 1}. #{exhibition.name.upcase} - #{exhibition.venue}"
-      puts "  Starting date: #{exhibition.starting_date} - Closing date: #{exhibition.closing_date}"
+      puts "#{index + 1}. #{exhibition.name.upcase} - #{exhibition.venue}".colorize(:light_blue)
+      puts "    Starting date: #{exhibition.starting_date} - Closing date: #{exhibition.closing_date}"
+      puts ""
     end
   end
 
   def display_exhibition(exhibition)
-    puts "  Times: #{exhibition.times}"
-    puts "  Cost: #{exhibition.cost}"
-    puts "  Address: #{exhibition.address}"
-    puts "  Contact: #{exhibition.contact}"
-    puts "  Extended description: #{exhibition.extended_description}"
+    puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
+    puts "  Times: ".colorize(:light_blue) + "#{exhibition.times}"
+    puts "  Cost: ".colorize(:light_blue) + "#{exhibition.cost}"
+    puts "  Address: ".colorize(:light_blue) + "#{exhibition.address}"
+    puts "  Contact: ".colorize(:light_blue) + "#{exhibition.contact[3..-1]}"
+    #puts "  Extended description: ".colorize(:light_blue) + "#{exhibition.extended_description}"
   end
 
 end
