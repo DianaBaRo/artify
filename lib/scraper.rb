@@ -1,7 +1,3 @@
-require 'pry'
-require 'open-uri'
-require 'nokogiri'
-
 class Scraper
 
   def self.scrape_index_page(index_url)
@@ -20,7 +16,6 @@ class Scraper
       exhibition_data[:starting_date] = exhibition.css("span.open-date").first.text
       exhibition_data[:closing_date] = exhibition.css("span.close-date").first.text
       exhibition_data[:exhibition_url] = exhibition.css("h4.event-name a").attribute("href").value
-      exhibition_data[:description] = exhibition.css(".tile-item--info p:nth-of-type(2)").first.text
 
       exhibitions << exhibition_data
     end
@@ -35,12 +30,11 @@ class Scraper
 
     exhibition = {}
 
-    #exhibition[:title] = individual_exhibition.css("h1.entry-title").text
     exhibition[:times] = individual_exhibition.css("td")[3].content
     exhibition[:cost] = individual_exhibition.css("td")[5].content
     exhibition[:address] = individual_exhibition.css("td")[9].content
     exhibition[:contact] = individual_exhibition.css("td")[11].content
-    exhibition[:extended_description] = individual_exhibition.css(".medium-9.columns").text
+    exhibition[:extended_description] = individual_exhibition.css(".medium-9.columns p").text
 
     exhibition
 
