@@ -1,35 +1,28 @@
 class CommandLineInterface
-  
-  BASE_LINK = 'http://www.artlyst.com/whats-on/'
+
+  BASE_LINK = "http://www.artlyst.com/whats-on/"
 
   def run
     
     input = ""
-    puts "Hi and welcome to Artify!"
+
+    puts "Welcome to Artify!".colorize(:blue)
+
     until input == "exit"
-      puts "To see all of the exhibitions listed in Artlyst at the moment, enter 'exhibitions'."
-      puts "To quit, type 'exit'."
-      puts "What would you like to do?"
+
+      puts "To see all of the exhibitions listed in Artlyst at the moment, enter 'exhibitions'.".colorize(:blue)
+      puts "To get more information about an exhibition, enter 'info'.".colorize(:blue)
+      puts "To quit, type 'exit'.".colorize(:blue)
+      puts "What would you like to do?".colorize(:blue)
 
       input = gets.chomp.downcase
       
-      if input == "exhibitions"
+      case input
+      when "exhibitions"
         make_exhibitions
         display_exhibitions
-        puts "Enter the number of the exhibition which you would like to know more"
-        
-        input = ""
-        input = gets.chomp.to_i 
-
-        if input >= 1 && input < Exhibition.all.length
-          Exhibition.all.each_with_index do |exhibition, index|
-            if index + 1 == input
-              attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
-              exhibition.add_exhibition_attributes(attributes)
-              display_exhibition(exhibition)
-            end
-          end
-        end
+      when "info"
+        more_info
       end
     end
   end
@@ -39,16 +32,14 @@ class CommandLineInterface
     Exhibition.create_from_collection(exhibitions_array)
   end
 
-  def add_attributes_to_exhibitions
-    Exhibition.all.each do |exhibition|
-      attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
-      exhibition.add_exhibition_attributes(attributes)
-    end
+  def add_attributes
+    attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
+    exhibition.add_exhibition_attributes(attributes)
   end
 
   def display_exhibitions
     Exhibition.all.each_with_index do |exhibition, index|
-      puts "#{index + 1}. #{exhibition.name.upcase} - #{exhibition.venue}".colorize(:light_blue)
+      puts "#{index + 1}. #{exhibition.name.upcase} - #{exhibition.venue}".colorize(:blue)
       puts "    Starting date: #{exhibition.starting_date} - Closing date: #{exhibition.closing_date}"
       puts ""
     end
@@ -56,11 +47,25 @@ class CommandLineInterface
 
   def display_exhibition(exhibition)
     puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
-    puts "  Times: ".colorize(:light_blue) + "#{exhibition.times}"
-    puts "  Cost: ".colorize(:light_blue) + "#{exhibition.cost}"
-    puts "  Address: ".colorize(:light_blue) + "#{exhibition.address}"
-    puts "  Contact: ".colorize(:light_blue) + "#{exhibition.contact[3..-1]}"
-    #puts "  Extended description: ".colorize(:light_blue) + "#{exhibition.extended_description}"
+    puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
+    puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
+    puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
+    puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
   end
 
+  def more_info
+    puts "Enter the number of the exhibition which you would like to know more".colorize(:blue)
+    input = ""
+    input = gets.chomp.to_i
+    make_exhibitions
+    if input >= 1 && input < Exhibition.all.length
+      Exhibition.all.each_with_index do |exhibition, index|
+        if index + 1 == input
+          attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
+          exhibition.add_exhibition_attributes(attributes)
+          display_exhibition(exhibition)
+        end
+      end
+    end
+  end
 end
