@@ -3,6 +3,7 @@ class Exhibition
   attr_accessor :name, :venue, :starting_date, :closing_date, :exhibition_url, :times, :cost, :address, :contact
 
   @@all = []
+#me gustaria method initialize vacio y añadir atributos de otra forma.
 
   def initialize(exhibition_hash)
     exhibition_hash.each {|k,v| self.send(("#{k}="),v)}
