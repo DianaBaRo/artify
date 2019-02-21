@@ -71,12 +71,6 @@ class CommandLineInterface
       end
     end
   end
-=begin
-  def add_attributes(exhibition)
-    attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
-    exhibition.add_exhibition_attributes(attributes)
-  end
-=end
   
   def display_exhibition(exhibition)
     puts
@@ -88,4 +82,5 @@ class CommandLineInterface
     puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
     puts
   end
+  
 end
