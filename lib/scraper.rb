@@ -34,10 +34,10 @@ class Scraper
     exhibition[:cost] = individual_exhibition.css("td")[5].content
     exhibition[:address] = individual_exhibition.css("td")[9].content
     exhibition[:contact] = individual_exhibition.css("td")[11].content
-    exhibition[:extended_description] = individual_exhibition.css(".medium-9.columns p").text
 
     exhibition
 
   end
+  
 end
  
