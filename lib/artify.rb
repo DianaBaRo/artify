@@ -58,24 +58,25 @@ class Artify
 
   def more_info
     puts "Enter the number of the exhibition which you would like to know more."
+
     input = ""
     input = gets.chomp.to_i
+
     make_exhibitions
-    if input >= 1 && input < Exhibition.all.length
-      Exhibition.all.each_with_index do |exhibition, index|
-        if index + 1 == input
-          attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
-          exhibition.add_exhibition_attributes(attributes)
+    
+    Exhibition.all.each_with_index do |exhibition, index|
+      if index + 1 == input
+        attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
+        exhibition.add_exhibition_attributes(attributes)
           
-          puts
-          puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
-          puts
-          puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
-          puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
-          puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
-          puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
-          puts
-        end
+        puts
+        puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
+        puts
+        puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
+        puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
+        puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
+        puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
+        puts
       end
     end
   end
