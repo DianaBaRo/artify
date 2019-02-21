@@ -5,15 +5,28 @@ class CommandLineInterface
   def run
     
     input = ""
+    
+    banner = "               _   _  __       
+    /\\        | | (_)/ _|      
+   /  \\   _ __| |_ _| |_ _   _ 
+  / /\\ \\ | '__| __| |  _| | | |
+ / ____ \\| |  | |_| | | | |_| |
+/_/    \\_\\_|   \\__|_|_|  \\__, |
+                          __/ |
+                         |___/ ".colorize(:blue)
 
-    puts "Welcome to Artify!".colorize(:blue)
+    print banner    
+    
+    2.times {puts}
+
+    puts "Welcome to Artify!"
 
     until input == "exit"
 
-      puts "To see all of the exhibitions listed in Artlyst at the moment, enter 'exhibitions'.".colorize(:blue)
-      puts "To get more information about an exhibition, enter 'info'.".colorize(:blue)
-      puts "To quit, type 'exit'.".colorize(:blue)
-      puts "What would you like to do?".colorize(:blue)
+      puts "To see all of the exhibitions listed in Artlyst at the moment, enter " + "'exhibitions'".colorize(:blue) + "."
+      puts "To get more information about an exhibition, enter " + "'info'".colorize(:blue) + "."
+      puts "To quit, type " + "'exit'".colorize(:blue) + "."
+      puts "What would you like to do?"
 
       input = gets.chomp.downcase
       
@@ -38,23 +51,29 @@ class CommandLineInterface
   end
 
   def display_exhibitions
+    puts
+    puts "List of exhibitions:"
     Exhibition.all.each_with_index do |exhibition, index|
+      puts
       puts "#{index + 1}. #{exhibition.name.upcase} - #{exhibition.venue}".colorize(:blue)
       puts "    Starting date: #{exhibition.starting_date} - Closing date: #{exhibition.closing_date}"
-      puts ""
+      puts 
     end
   end
 
   def display_exhibition(exhibition)
+    puts
     puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
+    puts
     puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
     puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
     puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
     puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
+    puts
   end
 
   def more_info
-    puts "Enter the number of the exhibition which you would like to know more".colorize(:blue)
+    puts "Enter the number of the exhibition which you would like to know more."
     input = ""
     input = gets.chomp.to_i
     make_exhibitions
