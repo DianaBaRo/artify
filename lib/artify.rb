@@ -66,21 +66,18 @@ class Artify
         if index + 1 == input
           attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
           exhibition.add_exhibition_attributes(attributes)
-          display_exhibition(exhibition)
+          
+          puts
+          puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
+          puts
+          puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
+          puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
+          puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
+          puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
+          puts
         end
       end
     end
-  end
-  
-  def display_exhibition(exhibition)
-    puts
-    puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
-    puts
-    puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
-    puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
-    puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
-    puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
-    puts
   end
   
 end
