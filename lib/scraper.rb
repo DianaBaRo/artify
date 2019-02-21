@@ -24,7 +24,7 @@ class Scraper
 
   end
 
-  def self.scrape_exhibition_page(exhibition_url)
+  def self.scrape_exhibition_page(exhibition_url) #(exhibition instance)
     html = open(exhibition_url)
     individual_exhibition = Nokogiri::HTML(html)
 
@@ -38,6 +38,6 @@ class Scraper
     exhibition
 
   end
-  
+
 end
  
