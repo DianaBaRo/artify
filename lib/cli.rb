@@ -45,11 +45,6 @@ class CommandLineInterface
     Exhibition.create_from_collection(exhibitions_array)
   end
 
-  def add_attributes
-    attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
-    exhibition.add_exhibition_attributes(attributes)
-  end
-
   def display_exhibitions
     puts
     puts "List of exhibitions:"
@@ -59,17 +54,6 @@ class CommandLineInterface
       puts "    Starting date: #{exhibition.starting_date} - Closing date: #{exhibition.closing_date}"
       puts 
     end
-  end
-
-  def display_exhibition(exhibition)
-    puts
-    puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
-    puts
-    puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
-    puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
-    puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
-    puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
-    puts
   end
 
   def more_info
@@ -86,5 +70,22 @@ class CommandLineInterface
         end
       end
     end
+  end
+=begin
+  def add_attributes(exhibition)
+    attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
+    exhibition.add_exhibition_attributes(attributes)
+  end
+=end
+  
+  def display_exhibition(exhibition)
+    puts
+    puts "More information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:"
+    puts
+    puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
+    puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
+    puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
+    puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}"
+    puts
   end
 end
