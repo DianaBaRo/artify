@@ -9,7 +9,7 @@ class Exhibition
     @@all << self
   end
 
-  def self.create_from_collection(exhibitions_array)
+  def self.create_from_collection(exhibitions_array) #Este array es el resultado de scrape_index_page
     exhibitions_array.each {|exhibition_hash| Exhibition.new(exhibition_hash)}
   end 
 
@@ -21,4 +21,5 @@ class Exhibition
   def self.all
     @@all
   end
+
 end
