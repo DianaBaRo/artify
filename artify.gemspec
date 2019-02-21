@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "This Ruby Gem provides a CLI to view the art exhibitions selected by Artlyst that are taking place at the moment in London"
   s.authors     = ["Diana Badas"]
   s.email       = "info@carolinabadas"
-  s.files       = ["lib/artify.rb", "exhibition.rb", "scraper.rb"]
+  s.files       = ["lib/artify.rb", "lib/exhibition.rb", "lib/scraper.rb"]
   s.homepage    = "http://rubygems.org/gems/artify"
   s.license     = "MIT"
 end
