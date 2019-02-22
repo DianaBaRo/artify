@@ -41,7 +41,7 @@ $ bundle install
 To install this gem onto your local machine:
 
 *Clone with HTTPS this repository
-* Open your terminal and change to the local directory where you want to clone your repository and run:
+*Open your terminal and change to the local directory where you want to clone your repository and run:
 
 ```
 $ git clone + the link copied before.
