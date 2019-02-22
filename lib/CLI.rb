@@ -2,7 +2,12 @@ class CLI
 
   BASE_LINK = "http://www.artlyst.com/whats-on/"
 
-  def run
+  def call 
+    menu
+    goodbye
+  end
+
+  def menu
     input = ""
     a = Artii::Base.new
     print a.asciify('artify').colorize(:blue)
@@ -19,6 +24,8 @@ class CLI
         display_exhibitions
       when "info"
         more_info
+      else
+        puts "\nNot sure what you mean." unless input == "exit"
       end
     end
   end
@@ -41,7 +48,7 @@ class CLI
     input = ""
     input = gets.chomp.to_i
     make_exhibitions
-    if input >= 1 && input < Exhibition.length
+    if input >= 1 && input < Exhibition.all.uniq.length
       Exhibition.all.each_with_index do |exhibition, index|
         if index + 1 == input
           attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
@@ -53,7 +60,16 @@ class CLI
           puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}\n"
         end
       end
+    else
+      puts "Sorry, this number doesn't match with any of the exhibitions listed"
     end
+  end
+
+  def goodbye
+    a = Artii::Base.new
+    print a.asciify('Bye!').colorize(:blue)
+    puts
+    puts
   end
   
 end
