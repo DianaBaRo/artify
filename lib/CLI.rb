@@ -1,4 +1,4 @@
-class Artify
+class CLI
 
   BASE_LINK = "http://www.artlyst.com/whats-on/"
 
