@@ -53,6 +53,8 @@ Type the below on your terminal and follow the on screen prompts.
 ```
 $ ruby bin/artify
 ```
+### Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/DianaBaRo/artify. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant code of conduct](https://www.contributor-covenant.org/).
 
 ## Author
 
