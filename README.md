@@ -1,6 +1,7 @@
 # artify
 
 This Ruby Gem provides a CLI to view the art exhibitions selected by Artlyst that are taking place at the moment in London.
+[Artlyst](http://www.artlyst.com/whats-on/).
 
 ## Getting Started
 
