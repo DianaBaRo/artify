@@ -6,37 +6,52 @@ This Ruby Gem provides a CLI to view the art exhibitions selected by Artlyst tha
 
 
 ### Prerequisites
-Gems you need to install the software.
+Gems you need to install the software:
+
+* bundler
 
 ```
-bundler
+$ sudo gem install bundler
 ```
+*nokogiri
 
 ```
-nokogiri
+$ sudo gem install nokogiri
 ```
+*colorize
 
 ```
-colorize
+$ sudo gem install colorize
 ```
+*artii
 
 ```
-artii
+$ sudo gem install artii
+
+```
+
+Finally run the folowing code and automatically a file will be created or updated in your directory: Gemfile.lock with all the gems installed.
+
+```
+$ bundle install
 ```
 
 ### Installation
 
-To install this gem onto your local machine, run:
+To install this gem onto your local machine:
+
+*Clone with HTTPS this repository
+* Open your terminal and change to the local directory where you want to clone your repository and run:
 
 ```
-$ sudo gem install artify
+$ git clone + the link copied before.
 ```
 
 ### Usage
-Type the below and follow the on screen prompts.
+Type the below on your terminal and follow the on screen prompts.
 
 ```
-$ artify
+$ ruby bin/artify
 ```
 
 ## Author
