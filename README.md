@@ -13,17 +13,17 @@ Gems you need to install the software:
 ```
 $ sudo gem install bundler
 ```
-*nokogiri
+* nokogiri
 
 ```
 $ sudo gem install nokogiri
 ```
-*colorize
+* colorize
 
 ```
 $ sudo gem install colorize
 ```
-*artii
+* artii
 
 ```
 $ sudo gem install artii
@@ -40,8 +40,8 @@ $ bundle install
 
 To install this gem onto your local machine:
 
-*Clone with HTTPS this repository
-*Open your terminal and change to the local directory where you want to clone your repository and run:
+* Clone with HTTPS this repository
+* Open your terminal and change to the local directory where you want to clone your repository and run:
 
 ```
 $ git clone + the link copied before.
