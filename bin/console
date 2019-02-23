@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment.rb'
-require 'artify'
+
+require_relative "../lib/CLI.rb"
+require_relative "../lib/exhibition.rb"
+require_relative "../lib/scraper.rb"
+
 require 'irb'
 IRB.start
