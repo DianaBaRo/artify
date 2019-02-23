@@ -48,7 +48,7 @@ class CLI
     input = ""
     input = gets.chomp.to_i
     make_exhibitions
-    if input >= 1 && input < Exhibition.all.uniq.length
+    if input >= 1 && input < Exhibition.all.length
       Exhibition.all.each_with_index do |exhibition, index|
         if index + 1 == input
           attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
