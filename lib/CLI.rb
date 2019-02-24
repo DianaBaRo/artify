@@ -8,19 +8,25 @@ class CLI
   end
 
   def menu
+    make_exhibitions
+    
     input = ""
+
     a = Artii::Base.new
     print a.asciify('artify').colorize(:blue)
+
     puts "\n\nWelcome to Artify!"
+
     until input == "exit"
       puts "\nTo see all of the exhibitions listed in Artlyst at the moment, enter " + "'exhibitions'".colorize(:blue) + "."
       puts "To get more information about an exhibition, enter " + "'info'".colorize(:blue) + "."
       puts "To quit, type " + "'exit'".colorize(:blue) + "."
       puts "What would you like to do?"
+
       input = gets.chomp.downcase
+
       case input
       when "exhibitions"
-        make_exhibitions
         display_exhibitions
       when "info"
         more_info
@@ -47,8 +53,7 @@ class CLI
     puts "Enter the number of the exhibition which you would like to know more."
     input = ""
     input = gets.chomp.to_i
-    make_exhibitions
-    if input >= 1 && input < Exhibition.all.length
+    if input >= 1 && input <= Exhibition.all.length
       Exhibition.all.each_with_index do |exhibition, index|
         if index + 1 == input
           attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
