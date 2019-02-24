@@ -9,7 +9,7 @@ class CLI
 
   def menu
     make_exhibitions
-    
+
     input = ""
 
     a = Artii::Base.new
@@ -33,6 +33,7 @@ class CLI
       else
         puts "\nNot sure what you mean." unless input == "exit"
       end
+
     end
   end
 
@@ -43,6 +44,7 @@ class CLI
 
   def display_exhibitions
     puts "\nList of exhibitions:"
+
     Exhibition.all.each_with_index do |exhibition, index|
       puts "\n#{index + 1}. #{exhibition.name.upcase} - #{exhibition.venue}".colorize(:blue)
       puts "    Starting date: #{exhibition.starting_date} - Closing date: #{exhibition.closing_date}\n"
@@ -51,8 +53,10 @@ class CLI
 
   def more_info
     puts "Enter the number of the exhibition which you would like to know more."
+
     input = ""
     input = gets.chomp.to_i
+    
     if input >= 1 && input <= Exhibition.all.length
       Exhibition.all.each_with_index do |exhibition, index|
         if index + 1 == input

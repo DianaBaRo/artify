@@ -25,6 +25,7 @@ class Scraper
   end
 
   def self.scrape_exhibition_page(exhibition_url)
+    
     html = open(exhibition_url)
     individual_exhibition = Nokogiri::HTML(html)
 
