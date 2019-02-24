@@ -38,8 +38,10 @@ class CLI
   end
 
   def make_exhibitions
-    exhibitions_array = Scraper.scrape_index_page(BASE_LINK)
-    Exhibition.create_from_collection(exhibitions_array)
+    if Exhibition.all.empty?
+      exhibitions_array = Scraper.scrape_index_page(BASE_LINK)
+      Exhibition.create_from_collection(exhibitions_array)
+    end
   end
 
   def display_exhibitions
