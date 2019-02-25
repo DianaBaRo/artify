@@ -59,17 +59,16 @@ class CLI
     input = gets.chomp.to_i
     
     if input >= 1 && input <= Exhibition.all.length
-      Exhibition.all.each_with_index do |exhibition, index|
-        if index + 1 == input
-          attributes = Scraper.scrape_exhibition_page(exhibition.exhibition_url)
-          exhibition.add_exhibition_attributes(attributes)
-          puts "\nMore information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:\n"
-          puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
-          puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
-          puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
-          puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}\n"
-        end
+      exhibition = Exhibition.all[input.to_i - 1]
+      if exhibition.times == nil
+        Scraper.scrape_exhibition_page(exhibition)
       end
+      
+      puts "\nMore information regarding " + "#{exhibition.name.upcase}".colorize(:blue) + " exhibition:\n"
+      puts "  Times: ".colorize(:blue) + "#{exhibition.times}"
+      puts "  Cost: ".colorize(:blue) + "#{exhibition.cost}"
+      puts "  Address: ".colorize(:blue) + "#{exhibition.address}"
+      puts "  Contact: ".colorize(:blue) + "#{exhibition.contact[3..-1]}\n"
     else
       puts "Sorry, this number doesn't match with any of the exhibitions listed"
     end
@@ -83,3 +82,4 @@ class CLI
   end
   
 end
+
