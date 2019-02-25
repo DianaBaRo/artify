@@ -24,20 +24,17 @@ class Scraper
 
   end
 
-  def self.scrape_exhibition_page(exhibition_url)
+  def self.scrape_exhibition_page(exhibition)
+    puts "********* scraping exhibition"
     
-    html = open(exhibition_url)
+    html = open(exhibition.exhibition_url)
     individual_exhibition = Nokogiri::HTML(html)
 
-    exhibition = {}
-
-    exhibition[:times] = individual_exhibition.css("td")[3].content
-    exhibition[:cost] = individual_exhibition.css("td")[5].content
-    exhibition[:address] = individual_exhibition.css("td")[9].content
-    exhibition[:contact] = individual_exhibition.css("td")[11].content
-
-    exhibition
-
+    exhibition.times = individual_exhibition.css("td")[3].content
+    exhibition.cost = individual_exhibition.css("td")[5].content
+    exhibition.address = individual_exhibition.css("td")[9].content
+    exhibition.contact = individual_exhibition.css("td")[11].content
+    
   end
 
 end
