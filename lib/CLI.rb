@@ -33,7 +33,6 @@ class CLI
       else
         puts "\nNot sure what you mean." unless input == "exit"
       end
-
     end
   end
 
