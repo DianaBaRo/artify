@@ -7,7 +7,7 @@ class Scraper
 
     exhibitions = []
 
-    all_exhibitions = index.css("div.tile-item.normal.Exhibition.recommended.editors_choice")
+    all_exhibitions = index.css("div.tile-item.normal.Exhibition")
 
     all_exhibitions.each do |exhibition|
       exhibition_data = {}
