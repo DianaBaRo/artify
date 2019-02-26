@@ -13,11 +13,6 @@ class Exhibition
     exhibitions_array.each {|exhibition_hash| Exhibition.new(exhibition_hash)}
   end 
 
-  def add_exhibition_attributes(attributes_hash)
-    attributes_hash.each{|k,v| self.send(("#{k}="),v)}
-    self
-  end 
-
   def self.all
     @@all
   end
