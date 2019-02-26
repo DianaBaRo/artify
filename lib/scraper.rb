@@ -25,7 +25,7 @@ class Scraper
   end
 
   def self.scrape_exhibition_page(exhibition)
-    puts "********* scraping exhibition"
+    puts "********* scraping exhibition **********"
     
     html = open(exhibition.exhibition_url)
     individual_exhibition = Nokogiri::HTML(html)
